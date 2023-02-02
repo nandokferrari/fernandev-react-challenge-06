@@ -2,7 +2,7 @@
 
 **Se você curtir esse conteúdo, deixa uma STAR aí nesse repo,** porque isso me motiva a trazer mais conteúdos desse gênero.
 
-## React Interview Challenge #05
+## React Interview Challenge #06
 
 E aí dev, tudo bem? Trouxe pra você mais um desafio de entrevista para que você possa treinar em casa e aprimorar suas habilidades.
 
@@ -19,6 +19,7 @@ Criar um carrinho de compras totalmente interativo. O usuário deve poder:
 - alterar a quantidade
 - a quantidade não pode ser menor que 01
 - calcular soma total do preço dos produtos inseridos de acordo com suas quantidades
+- FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
 
 ## Branch com solução
 
