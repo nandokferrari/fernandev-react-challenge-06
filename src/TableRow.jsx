@@ -1,30 +1,31 @@
 import React from 'react';
+import { formatter } from './helpers/currencyFormartter';
 
-const TableRow = () => {
+const TableRow = ({produto}) => {
   return (
     <tr>
       <td>
         <div className='product'>
           <img src='https://picsum.photos/100/120' alt='' />
           <div className='info'>
-            <div className='name'>Nome do produto</div>
-            <div className='category'>Categoria</div>
+            <div className='name'>{produto.nome?.toUpperCase()}</div>
+            <div className='category'>{produto.categoria}</div>
           </div>
         </div>
       </td>
-      <td>R$ 120</td>
+      <td>{formatter.format(produto.preco || 0)}</td>
       <td>
         <div className='qty'>
           <button>
             <i className='bx bx-minus'></i>
           </button>
-          <span>2</span>
+          <span>{produto.qtd}</span>
           <button>
             <i className='bx bx-plus'></i>
           </button>
         </div>
       </td>
-      <td>R$ 240</td>
+      <td>{(produto.preco && produto.qtd)? formatter.format(produto.preco * produto.qtd) : formatter.format(0)}</td>
       <td>
         <button className='remove'>
           <i className='bx bx-x'></i>
