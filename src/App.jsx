@@ -19,8 +19,6 @@ const produto = {
   qtd: 0
 }
 
-const produtos = [produto]
-
 import './styles.scss';
 
 import PageHeader from './layout/PageHeader';
@@ -32,12 +30,17 @@ import { useState } from 'react';
 
 function App() {
   const [isVisible, setIsVisible] = useState(false)
+  const [products, setProducts] = useState([produto])
+
+  function addNewProduct(product){
+    setProducts([...products, product])
+  }
 
   return (
     <>
       <PageHeader />
 
-      <NewProduct isVisible={isVisible} onClose={()=> setIsVisible(false)} />
+      <NewProduct isVisible={isVisible} onClose={()=> setIsVisible(false)} addNewProduct={addNewProduct} />
 
       <main>
         <PageTitle data={'Seu carrinho'} />
@@ -58,7 +61,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {produtos.map(prod => <TableRow produto={prod} />)}
+                {products.map(prod => <TableRow produto={prod} />)}
               </tbody>
             </table>
           </section>
