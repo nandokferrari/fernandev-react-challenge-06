@@ -35,7 +35,7 @@ export default function NewProduct({isVisible, onClose, addNewProduct}){
             return 
         }
 
-         addNewProduct({...form, qtd: 0})
+         addNewProduct({...form, qtd: 0, id: new Date()})
          onClose()
     }
 

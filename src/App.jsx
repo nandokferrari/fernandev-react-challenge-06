@@ -4,7 +4,8 @@
 Você deve desenvolver um carrinho de compras funcional.
 Funcionalidades que esperamos que você desenvolva:
 
-todo - inserção de novos produtos no carrinho
+did - inserção de novos produtos no carrinho
+
 todo - remoção de produtos já inseridos
 todo - alteração de quantidade de cada item 
 todo - cálculo do preço total dos itens inseridos
@@ -13,6 +14,7 @@ todo - FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
 */
 
 const produto = {
+  id: new Date(),
   nome: "Caderno",
   categoria: "livraria",
   preco: 13,
@@ -33,7 +35,11 @@ function App() {
   const [products, setProducts] = useState([produto])
 
   function addNewProduct(product){
-    setProducts([...products, product])
+    setProducts(prev => [...prev, product])
+  }
+
+  function removeProduct(productId){
+    setProducts(prev=> prev.filter(prod => prod.id !== productId))
   }
 
   return (
@@ -61,7 +67,10 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {products.map(prod => <TableRow produto={prod} />)}
+                {products.length > 0 && products.map(prod => <TableRow 
+                  key={prod.id} 
+                  produto={prod} 
+                  removeProduct={()=>removeProduct(prod.id)} />)}
               </tbody>
             </table>
           </section>

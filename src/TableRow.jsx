@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatter } from './helpers/currencyFormartter';
 
-const TableRow = ({produto}) => {
+const TableRow = ({produto, removeProduct}) => {
   return (
     <tr>
       <td>
@@ -27,7 +27,7 @@ const TableRow = ({produto}) => {
       </td>
       <td>{(produto.preco && produto.qtd)? formatter.format(produto.preco * produto.qtd) : formatter.format(0)}</td>
       <td>
-        <button className='remove'>
+        <button className='remove' onClick={removeProduct}>
           <i className='bx bx-x'></i>
         </button>
       </td>
