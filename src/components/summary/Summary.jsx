@@ -11,7 +11,7 @@ const Summary = ({total}) => {
 
   function applyDiscount(){
     if(discount.toUpperCase() !== "MEUCUPOM" && discount.toUpperCase() !== "MEUCUPOM2"){
-      return alert("cupom inválido!")
+      return alert("cupom inválido!, (cupons disponíveis: MEUCUPOM e MEUCUPOM2)")
     }
 
     const discountAlreadyAplied = discounts.find(disc => disc.name === discount.toUpperCase())
