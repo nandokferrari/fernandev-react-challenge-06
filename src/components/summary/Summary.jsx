@@ -55,7 +55,7 @@ const Summary = ({total}) => {
             <span>Gratuito</span>
           </div>
           {discounts.length > 0 && <h4 className='cupons-title'>Cupons:</h4>}
-          {discounts.map(disc => <div>
+          {discounts.map(disc => <div key={disc.name}>
             <span>{disc.name}</span>
             <span>{disc.value * 100} %</span>
             <button id='remove' onClick={()=>removeDiscount(disc.name)}>
