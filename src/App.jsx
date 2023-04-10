@@ -20,7 +20,7 @@ import PageTitle from './layout/PageTitle';
 import Summary from './Summary';
 import TableRow from './TableRow';
 import NewProduct from './components/NewProduct';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
   const produto = {
@@ -32,15 +32,9 @@ function App() {
   }
   const [isVisible, setIsVisible] = useState(false)
   const [products, setProducts] = useState([])
-  const [total, setTotal] = useState(0)
   const [discount, setDiscount] = useState(0)
 
-  useEffect(()=>{
-    if(products.length){ 
-      const timer = setTimeout(()=>setTotal(calculateTotal()), 200)
-      return () => clearTimeout(timer)
-    }
-  },[products])
+  const total = calculateTotal()
 
   function addNewProduct(product){
     setProducts(prev => [...prev, product])
