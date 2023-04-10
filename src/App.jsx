@@ -5,8 +5,8 @@ Você deve desenvolver um carrinho de compras funcional.
 Funcionalidades que esperamos que você desenvolva:
 
 did - inserção de novos produtos no carrinho
+did - remoção de produtos já inseridos
 
-todo - remoção de produtos já inseridos
 todo - alteração de quantidade de cada item 
 todo - cálculo do preço total dos itens inseridos
 
@@ -42,6 +42,14 @@ function App() {
     setProducts(prev=> prev.filter(prod => prod.id !== productId))
   }
 
+  function addQtdProduct(productId){
+    setProducts(prev=> prev.map(prod => prod.id === productId? {...prod, qtd: prod.qtd++} : prod))
+  }
+
+  function decreaseQtdProduct(productId){
+    setProducts(prev=> prev.map(prod => prod.id === productId? {...prod, qtd: prod.qtd--} : prod))
+  }
+
   return (
     <>
       <PageHeader />
@@ -70,7 +78,9 @@ function App() {
                 {products.length > 0 && products.map(prod => <TableRow 
                   key={prod.id} 
                   produto={prod} 
-                  removeProduct={()=>removeProduct(prod.id)} />)}
+                  removeProduct={()=>removeProduct(prod.id)} 
+                  addQtdProduct={()=>addQtdProduct(prod.id)}
+                  decreaseQtdProduct={()=>decreaseQtdProduct(prod.id)} />)}
               </tbody>
             </table>
           </section>

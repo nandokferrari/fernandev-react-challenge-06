@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatter } from './helpers/currencyFormartter';
 
-const TableRow = ({produto, removeProduct}) => {
+const TableRow = ({produto, removeProduct, addQtdProduct, decreaseQtdProduct}) => {
   return (
     <tr>
       <td>
@@ -17,11 +17,11 @@ const TableRow = ({produto, removeProduct}) => {
       <td>
         <div className='qty'>
           <button>
-            <i className='bx bx-minus'></i>
+            <i className='bx bx-minus' onClick={decreaseQtdProduct}></i>
           </button>
           <span>{produto.qtd}</span>
           <button>
-            <i className='bx bx-plus'></i>
+            <i className='bx bx-plus'onClick={addQtdProduct}></i>
           </button>
         </div>
       </td>
