@@ -8,8 +8,7 @@ did - inserção de novos produtos no carrinho
 did - remoção de produtos já inseridos
 did - alteração de quantidade de cada item
 did - cálculo do preço total dos itens inseridos
-
-todo - FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
+did - FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
 */
 
 import './styles.scss';
