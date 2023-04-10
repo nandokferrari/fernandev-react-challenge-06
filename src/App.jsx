@@ -6,8 +6,8 @@ Funcionalidades que esperamos que você desenvolva:
 
 did - inserção de novos produtos no carrinho
 did - remoção de produtos já inseridos
+did - alteração de quantidade de cada item
 
-todo - alteração de quantidade de cada item 
 todo - cálculo do preço total dos itens inseridos
 
 todo - FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
@@ -47,7 +47,7 @@ function App() {
   }
 
   function decreaseQtdProduct(productId){
-    setProducts(prev=> prev.map(prod => prod.id === productId? {...prod, qtd: prod.qtd--} : prod))
+    setProducts(prev=> prev.map(prod => prod.id === productId? {...prod, qtd: prod.qtd === 0? prod.qtd :  prod.qtd--} : prod))
   }
 
   return (
