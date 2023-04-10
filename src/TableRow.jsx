@@ -16,12 +16,12 @@ const TableRow = ({produto, removeProduct, addQtdProduct, decreaseQtdProduct}) =
       <td>{formatter.format(produto.preco || 0)}</td>
       <td>
         <div className='qty'>
-          <button>
-            <i className='bx bx-minus' onClick={decreaseQtdProduct}></i>
+          <button onClick={decreaseQtdProduct}>
+            <i className='bx bx-minus'></i>
           </button>
           <span>{produto.qtd}</span>
-          <button>
-            <i className='bx bx-plus'onClick={addQtdProduct}></i>
+          <button onClick={addQtdProduct}>
+            <i className='bx bx-plus'></i>
           </button>
         </div>
       </td>
