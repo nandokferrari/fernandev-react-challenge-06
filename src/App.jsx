@@ -7,8 +7,7 @@ Funcionalidades que esperamos que você desenvolva:
 did - inserção de novos produtos no carrinho
 did - remoção de produtos já inseridos
 did - alteração de quantidade de cada item
-
-todo - cálculo do preço total dos itens inseridos
+did - cálculo do preço total dos itens inseridos
 
 todo - FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
 */
@@ -17,9 +16,9 @@ import './styles.scss';
 
 import PageHeader from './layout/PageHeader';
 import PageTitle from './layout/PageTitle';
-import Summary from './Summary';
+import Summary from './components/summary/Summary';
 import TableRow from './TableRow';
-import NewProduct from './components/NewProduct';
+import NewProduct from './components/newPorduct/NewProduct';
 import { useState } from 'react';
 
 function App() {
