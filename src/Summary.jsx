@@ -1,6 +1,7 @@
 import React from 'react';
+import { formatter } from './helpers/currencyFormartter';
 
-const Summary = () => {
+const Summary = ({total, discount}) => {
   return (
     <>
       <div className='box'>
@@ -8,7 +9,7 @@ const Summary = () => {
         <div className='info'>
           <div>
             <span>Sub-total</span>
-            <span>R$ 418</span>
+            <span>{formatter.format(total)}</span>
           </div>
           <div>
             <span>Frete</span>
@@ -23,7 +24,7 @@ const Summary = () => {
         </div>
         <footer>
           <span>Total</span>
-          <span>R$ 418</span>
+          <span>{formatter.format(total - discount)}</span>
         </footer>
       </div>
       <button>Finalizar Compra</button>

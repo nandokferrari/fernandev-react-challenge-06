@@ -13,14 +13,6 @@ todo - cálculo do preço total dos itens inseridos
 todo - FUNCIONALIDADE EXTRA: aplicação de cupom de desconto
 */
 
-const produto = {
-  id: new Date(),
-  nome: "Caderno",
-  categoria: "livraria",
-  preco: 13,
-  qtd: 0
-}
-
 import './styles.scss';
 
 import PageHeader from './layout/PageHeader';
@@ -28,11 +20,27 @@ import PageTitle from './layout/PageTitle';
 import Summary from './Summary';
 import TableRow from './TableRow';
 import NewProduct from './components/NewProduct';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const produto = {
+    id: new Date().getMilliseconds(),
+    nome: "Caderno",
+    categoria: "livraria",
+    preco: 13,
+    qtd: 0
+  }
   const [isVisible, setIsVisible] = useState(false)
-  const [products, setProducts] = useState([produto])
+  const [products, setProducts] = useState([])
+  const [total, setTotal] = useState(0)
+  const [discount, setDiscount] = useState(0)
+
+  useEffect(()=>{
+    if(products.length){ 
+      const timer = setTimeout(()=>setTotal(calculateTotal()), 200)
+      return () => clearTimeout(timer)
+    }
+  },[products])
 
   function addNewProduct(product){
     setProducts(prev => [...prev, product])
@@ -47,7 +55,12 @@ function App() {
   }
 
   function decreaseQtdProduct(productId){
-    setProducts(prev=> prev.map(prod => prod.id === productId? {...prod, qtd: prod.qtd === 0? prod.qtd :  prod.qtd--} : prod))
+    const productToDecrease = products.find(prod => prod.id === productId)
+    productToDecrease.qtd && setProducts(prev=> prev.map(prod => (prod.id === productId )? {...prod, qtd: prod.qtd--} : prod))
+  }
+
+  function calculateTotal(){
+    return products.length? products.reduce((accumulator,current,i) =>  current.qtd !== 0? accumulator + (current.preco * current.qtd) : accumulator,0) : 0
   }
 
   return (
@@ -79,13 +92,13 @@ function App() {
                   key={prod.id} 
                   produto={prod} 
                   removeProduct={()=>removeProduct(prod.id)} 
-                  addQtdProduct={()=>addQtdProduct(prod.id)}
+                  addQtdProduct={()=> addQtdProduct(prod.id)}
                   decreaseQtdProduct={()=>decreaseQtdProduct(prod.id)} />)}
               </tbody>
             </table>
           </section>
           <aside>
-            <Summary />
+            <Summary total={total} discount={discount} />
           </aside>
         </div>
       </main>
