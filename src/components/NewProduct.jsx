@@ -5,7 +5,7 @@ export default function NewProduct({isVisible, onClose, addNewProduct}){
     const [form, setForm]= useState({
         nome: '',
         categoria: '',
-        preco: null
+        preco: 0
     })
 
     function onChangeForm(e){
@@ -35,7 +35,7 @@ export default function NewProduct({isVisible, onClose, addNewProduct}){
             return 
         }
 
-         addNewProduct({...form, qtd: 0, id: new Date()})
+         addNewProduct({...form, qtd: 0, id: new Date().getMilliseconds()})
          onClose()
     }
 
@@ -48,15 +48,15 @@ export default function NewProduct({isVisible, onClose, addNewProduct}){
             <form onSubmit={onSubmit} className="new-product-form">
                 <div className="new-product-field-form">
                     <label>Nome:</label>
-                    <input name="nome" value={form.nome} onChange={onChangeForm} />
+                    <input name="nome" value={form?.nome} onChange={onChangeForm} />
                 </div>
                 <div className="new-product-field-form">
                     <label>Categoria:</label>
-                    <input  name="categoria" value={form.categoria} onChange={onChangeForm}/>
+                    <input  name="categoria" value={form?.categoria} onChange={onChangeForm}/>
                 </div>
                 <div className="new-product-field-form">
                     <label>Preço:</label>
-                    <input name="preco" value={form.preco} onChange={onChangeForm} type="number" />
+                    <input name="preco" value={form?.preco} onChange={onChangeForm} type="number" />
                 </div>
                 <button 
                     type="submit" 
